@@ -1,6 +1,5 @@
 from pathlib import Path
-from typing import NamedTuple, Iterator
-from typing_extensions import Self
+from typing import NamedTuple, Iterator, Self
 import inspect
 
 

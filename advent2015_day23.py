@@ -1,7 +1,7 @@
-from typing import NamedTuple, Tuple, Union, Self
+import time
+from typing import NamedTuple, Self, Tuple, Union
 
 from utils import read_data
-import time
 
 
 class ProgramState(NamedTuple):
@@ -28,6 +28,7 @@ class ProgramState(NamedTuple):
             return ProgramState(**(self._asdict() | {"pc": self.pc + 1}))
         raise Exception("Unknown op!")
 
+
 def main():
     program = [x.split() for x in read_data().replace(",", "").splitlines()]
     curstate = ProgramState()
@@ -40,7 +41,6 @@ def main():
         op, *args = program[curstate.pc]
         curstate = curstate.execute(op, args)
     print(f"Part two: {curstate.b}")
-
 
 
 if __name__ == "__main__":
